@@ -49,26 +49,38 @@
                 <h2 class="title-form">Preencha o formulário</h2>
                 <p class="text-form">Saiba como adquirir os óleos essenciais com <strong>25% de desconto</strong> e ter todos os benefícios como Revendedor dōTerra</p>
     
-                <form action="" method="POST">
+                <form action="" method="POST" class="needs-validation" novalidate>
                   <div class="form-box">
                     <label for="name">Nome</label>
-                    <input type="text" name="name" placeholder="Digite seu nome aqui..." value="" id="name" required>
+                    <input type="text" name="name" placeholder="Digite seu nome aqui..." value="" id="name" minlength="4" required>
+
+                    <div class="invalid-feedback" id="invalidName">
+                      <p>Digite seu nome!</p>
+                    </div>
                   </div>
                   
                   <div class="form-box">
                     <label for="email">E-mail</label>
-                    <input type="text" name="name" placeholder="Digite seu e-mail aqui..." value="" id="email" required>
+                    <input type="text" name="email" placeholder="Digite seu e-mail aqui..." value="" id="email" required>
+                    
+                    <div class="invalid-feedback" id="invalidEmail">
+                      <p>Digite um e-mail válido!</p>
+                    </div>
                   </div>
     
                   <div class="form-box">
                     <label for="phone">Telefone</label>
-                    <input type="text" name="name" placeholder="Digite seu telefone aqui..." value="" id="phone" required>
+                    <input type="text" name="phone" placeholder="Digite seu telefone aqui..." value="" id="phone" required>
+                    
+                    <div class="invalid-feedback" id="invalidTelefone">
+                      <p>Digite um telefone válido!</p>
+                    </div>
                   </div>
                   
                   <div class="form-box">
                     <label for="interest">Qual seu interesse pelos óleos essenciais?</label>
-                    <select name="interest" id="interest">
-                      <option selected disabled>Selecione</option>
+                    <select name="interest" id="interest" required>
+                      <option selected disabled value="">Selecione</option>
                       <option value="Adquirir os produtos como cliente preferencial com 25% de desconto e ter mais benefícios.">
                         Adquirir os produtos como cliente preferencial com 25% de desconto e ter mais benefícios.
                       </option>
@@ -79,6 +91,10 @@
                         Receber mais informações para e tirar suas dúvidas.
                       </option>
                     </select>
+
+                    <div class="invalid-feedback" id="invalidSelected">
+                      <p>Selecione uma opção!</p>
+                    </div>
                   </div>
     
                   <button type="submit" class="btn btn-form">Enviar</button>
@@ -548,5 +564,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/js/scroll-form.js"></script>
   <script src="assets/js/scroll-top.js"></script>
+  <script src="assets/js/jquery.mask.js"></script>
+  <script src="assets/js/form-validation.js"></script>
+
+  <script type="text/javascript">
+		$(document).ready(function(){
+			var SPMaskBehavior = function (val) {
+			  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+			},
+			spOptions = {
+			  onKeyPress: function(val, e, field, options) {
+				  field.mask(SPMaskBehavior.apply({}, arguments), options);
+				}
+			};
+
+			$('#phone').mask(SPMaskBehavior, spOptions);
+		});
+	</script>
+	  
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58LHLXQ"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 </body>
 </html>

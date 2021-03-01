@@ -612,6 +612,22 @@ footer img {
   width: 92px;
 }
 
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.invalid-feedback p {
+  font-size: 0.8rem;
+}
+
+.is-invalid~.invalid-feedback, .is-invalid~.invalid-tooltip, .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+  display: block;
+}
+
 @media (min-width: 1024px) {
   .menu {
     justify-content: flex-start !important;
